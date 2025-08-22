@@ -1,0 +1,24 @@
+# Node modules (never push this!)
+node_modules/
+
+# Environment variables and secrets
+.env
+
+# Logs and debug
+*.log
+logs/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+/dist
+/build
+
+# Optional: Coverage reports/generated files
+coverage/
+*.tgz
+
+# OS-specific files
+*.swp

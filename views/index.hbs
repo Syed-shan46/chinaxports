@@ -1,0 +1,241 @@
+<section id="hero" class="hero section">
+    <div class="container mt-5 pt-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right" data-aos-delay="200">
+                <div class="hero-content">
+                    <h1 class="hero-title">Your Trusted Partner in Global Imports</h1>
+                    {{!-- <p class="hero-description">
+                        We bring high-quality products from China to wholesalers worldwide, ensuring the best prices
+                        and reliable delivery every time.
+                    </p> --}}
+                    <div class="d-flex gap-3">
+                        <!-- Store Button -->
+                        <a href="/store" class="btn btn-dark px-4 py-2 rounded-3 shadow">
+                            <i class="bi bi-shop me-2"></i> Store
+                        </a>
+
+                        <!-- Enquire Now Button -->
+                        <a href="enquiry.html" class="btn btn-outline-dark px-4 py-2 rounded-3">
+                            <i class="bi bi-chat-dots me-2"></i> Enquire Now
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 order-1 order-lg-2  d-md-block " data-aos="fade-left" data-aos-delay="300">
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
+                        <img src="/images/product/product-11.webp" class="img-fluid hero-image" alt="Hero Image">
+                        <div class="floating-elements">
+                            <div class="floating-card card-1">
+                                <i class="bi bi-globe2"></i>
+                                <span>Global</span>
+                            </div>
+                            <div class="floating-card card-2">
+                                <i class="bi bi-currency-dollar"></i>
+                                <span>Affordable</span>
+                            </div>
+                            <div class="floating-card card-3">
+                                <i class="bi bi-shield-check"></i>
+                                <span>Reliable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section><!-- /Hero Section -->
+
+<!-- Best Sellers Section -->
+<section id="best-sellers" class="best-sellers section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Handpicked for you</h2>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-5">
+            {{#each handpickedProducts}}
+            <div class="col-lg-3 col-md-6">
+                <a href="/products/product-details/{{this._id}}" class="text-decoration-none text-dark">
+                    <div class="product-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="product-image">
+                            {{#if this.featured}}
+                            <div class="product-badge">Limited</div>
+                            {{/if}}
+                            <img src="{{this.imageUrl.[0]}}" alt="{{this.productName}}" class="img-fluid"
+                                loading="eager" />
+
+                            <button class="enquire-btn">
+                                <i class="bi bi-chat-dots me-1"></i> Enquire
+                            </button>
+                        </div>
+                        <div lass="product-info">
+                            <div class="product-category mt-2">{{this.category.name}}</div>
+                            <h4 class="product-name">{{this.productName}}</h4>
+
+                            {{!-- <div class="product-price">
+                                {{#if this.oldPrice}}
+                                <span class="old-price">${{this.oldPrice}}</span>
+                                {{/if}}
+                                <span class="current-price">${{this.price}}</span>
+                            </div> --}}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Product 1 -->
+            {{/each}}
+        </div>
+
+    </div>
+
+</section><!-- /Best Sellers Section -->
+
+
+
+<!-- Cards Section -->
+<section id="cards" class="cards section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+            <!-- Trending Section -->
+            <div class="col-lg-4 col-md-6 mb-md-0" data-aos="fade-up" data-aos-delay="200">
+                <div class="product-category">
+                    <h3 class="category-title">
+                        <i class="bi bi-fire"></i> Trending Now
+                    </h3>
+                    <div class="product-list">
+                        {{#each trendingProducts}}
+                        <a href="/products/product-details/{{this._id}}" class="product-card-link">
+
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="{{this.imageUrl.[0]}}" alt="{{this.productName}}" class="img-fluid">
+                                    {{#if this.badge}}
+                                    <div class="product-badges">
+                                        <span class="badge-hot">{{this.badge}}</span>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">{{this.productName}}</h4>
+                                    <div class="product-price">
+                                        {{!-- <span class="current-price">${{this.price}}</span> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Section -->
+            <div class="col-lg-4 col-md-6 mb-md-0" data-aos="fade-up" data-aos-delay="300">
+                <div class="product-category">
+                    <h3 class="category-title">
+                        <i class="bi bi-star"></i> Special
+                    </h3>
+                    <div class="product-list">
+                        {{#each specialProducts}}
+                        <a href="/products/product-details/{{this._id}}" class="product-card-link">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="{{this.imageUrl.[0]}}" alt="{{this.productName}}" class="img-fluid">
+                                    {{#if this.discount}}
+                                    <div class="product-badges">
+                                        <span class="badge-sale">-{{this.discount}}%</span>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">{{this.productName}}</h4>
+                                    <div class="product-price">
+                                        {{!-- <span class="current-price">${{this.price}}</span> --}}
+                                        {{#if this.oldPrice}}
+                                        <span class="old-price">${{this.oldPrice}}</span>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6  mb-md-0" data-aos="fade-up" data-aos-delay="300">
+                <div class="product-category">
+                    <h3 class="category-title">
+                        <i class="bi bi-dice-5"></i> Random Picks
+                    </h3>
+                    <div class="product-list">
+                        {{#each handpickedProducts}}
+                        <a href="/products/product-details/{{this._id}}" class="product-card-link">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="{{this.imageUrl.[0]}}" alt="{{this.productName}}" class="img-fluid">
+                                    {{#if this.discount}}
+                                    <div class="product-badges">
+                                        <span class="badge-sale">-{{this.discount}}%</span>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">{{this.productName}}</h4>
+                                    <div class="product-price">
+                                        {{!-- <span class="current-price">${{this.price}}</span> --}}
+                                        {{#if this.oldPrice}}
+                                        <span class="old-price">${{this.oldPrice}}</span>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section><!-- /Cards Section -->
+
+<style>
+    .enquire-btn {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 30px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #161616, #020f1d);
+        color: #fff;
+        opacity: 0.7;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .enquire-btn:hover {
+        background: linear-gradient(135deg, #0056b3, #004080);
+        transform: translateX(-50%) translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .enquire-btn i {
+        font-size: 1rem;
+        vertical-align: middle;
+    }
+</style>

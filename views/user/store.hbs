@@ -1,0 +1,194 @@
+<main class="main">
+    <div class="container mt-5 ">
+        <div class="row">
+            <!-- Sidebar - Categories -->
+            <div class="col-lg-4 sidebar d-none d-lg-block">
+                <div class="widgets-container">
+                    <div class="product-categories-widget widget-item">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul class="category-tree list-unstyled mb-0">
+                            <!-- Category list from backend -->
+                            <li class="category-item">
+                                <a href="?{{queryString '' currentPage}}"
+                                    class="category-link {{#unless selectedCategory}}active{{/unless}}">All Products</a>
+                            </li>
+                            {{#each categories}}
+                            <li class="category-item">
+                                <a href="?category={{this._id}}&{{queryString selectedCategory ../currentPage}}"
+                                    class="category-link {{#ifEquals this._id ../selectedCategory}}active{{/ifEquals}}">
+                                    {{this.name}}
+                                </a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products List -->
+            <div class="col-lg-8">
+                <section id="category-product-list" class="category-product-list section">
+                    <div class="container" data-aos="fade-up" data-aos-delay="100">
+                        <div class="row g-4">
+                            {{#if products.length}}
+                            {{#each products}}
+                            <div class="col-6 col-xl-4">
+                                <a href="/products/product-details/{{this._id}}"
+                                    class="text-decoration-none text-reset">
+                                    <div class="product-card" data-aos="zoom-in" style="cursor: pointer;">
+                                        <div class="product-image">
+                                            <img src="{{this.imageUrl.[0]}}" class="main-image img-fluid"
+                                                alt="{{this.productName}}">
+                                        </div>
+                                        <div class="product-details" style="padding: 0px;">
+                                            <div class="product-category">{{this.category.name}}</div>
+                                            <h4 class="product-title">{{this.productName}}</h4>
+                                            {{!-- <div class="product-meta">
+                                                <div class="product-price">${{this.price}}</div>
+                                            </div> --}}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {{/each}}
+                            {{else}}
+                            <div class="col-12 text-center py-5">
+                                <!-- Lottie Animation -->
+                                <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_t24tpvcu.json"
+                                    background="transparent" speed="1"
+                                    style="width: 200px; height: 200px; margin: 0 auto;" loop autoplay>
+                                </lottie-player>
+
+                                <h4 class="fw-semibold mt-3">No Products Found</h4>
+                                <p class="text-muted">Try adjusting your filters or check back later.</p>
+                                <a href="/" class="btn btn-outline-dark mt-3">Back to Home</a>
+                            </div>
+                            {{/if}}
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pagination -->
+                <section id="category-pagination" class="category-pagination section">
+                    <div class="container">
+                        <nav class="d-flex justify-content-center" aria-label="Page navigation">
+                            <ul class="pagination">
+                                {{#if (gt currentPage 1)}}
+                                <li class="page-item">
+                                    <a href="?page={{subtract currentPage 1}}&category={{selectedCategory}}"
+                                        class="page-link" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {{/if}}
+
+                                {{#each (paginationItems totalPages)}}
+                                <li class="page-item {{#ifEquals this ../currentPage}}active{{/ifEquals}}">
+                                    <a href="?page={{this}}&category={{../selectedCategory}}"
+                                        class="page-link">{{this}}</a>
+                                </li>
+                                {{/each}}
+
+                                {{#if (lt currentPage totalPages)}}
+                                <li class="page-item">
+                                    <a href="?page={{add currentPage 1}}&category={{selectedCategory}}"
+                                        class="page-link" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                {{/if}}
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    <style>
+
+    /* Product Card */
+    .product-card {
+        border: 1px solid #eee;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Product Image */
+    .product-image {
+        position: relative;
+        padding-top: 100%;
+        /* Square ratio */
+        overflow: hidden;
+        background: #f9f9f9;
+    }
+
+    .product-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-image img {
+        transform: scale(1.05);
+    }
+
+    /* Product Details */
+    .product-details {
+        padding: 12px 14px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-category {
+        font-size: 13px;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .product-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* max 2 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 42px;
+        /* keeps height consistent */
+    }
+
+    .product-meta {
+        margin-top: auto;
+        font-size: 16px;
+        font-weight: bold;
+        color: #e63946;
+    }
+</style>
+
+</style>

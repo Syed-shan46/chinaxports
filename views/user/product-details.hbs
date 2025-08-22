@@ -1,0 +1,267 @@
+<section id="product-details" class="product-details section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4 mt-lg-5 pt-lg-5 align-items-start justify-content-center">
+
+      <!-- Product Gallery -->
+      <div class="col-lg-7" data-aos="zoom-in" data-aos-delay="150">
+        <div class="product-gallery">
+
+          <!-- Main Image -->
+          <div class="main-showcase mb-0">
+            <div class="image-zoom-container">
+              <img src="{{product.imageUrl.[0]}}" alt="{{product.productName}}"
+                class="img-fluid main-product-image drift-zoom shadow-sm rounded" id="main-product-image"
+                data-zoom="{{product.imageUrl.[0]}}">
+            </div>
+          </div>
+
+          <!-- Thumbnails -->
+          <div class="thumbnail-grid align-items-center justify-content-start">
+            {{#each product.imageUrl}}
+            <div class="thumbnail-wrapper thumbnail-item{{#if @first}} active{{/if}}" data-image="{{this}}">
+              <img src="{{this}}" alt="Thumbnail {{@index}}" class="img-fluid rounded">
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="col-lg-5 mt-1 align-items-center" data-aos="fade-left" data-aos-delay="200">
+        <div class="product-details">
+
+          <!-- Product Name -->
+          <h1 class="product-name">{{product.productName}}</h1>
+
+          <!-- Price Section -->
+          {{!-- <div class="pricing-section mb-3">
+            <div class="price-display">
+              <span class="sale-price">${{product.price}}</span>
+              {{#if product.oldPrice}}
+              <span class="regular-price">${{product.oldPrice}}</span>
+              {{/if}}
+            </div>
+          </div> --}}
+
+          <!-- Action Buttons -->
+          <div class="purchase-section">
+            <div class="action-buttons d-flex gap-2">
+              {{!-- <button class="btn btn-primary flex-fill">
+                <i class="bi bi-bag-plus"></i> Enquire Now For Best offers
+              </button> --}}
+              <a href="{{whatsappLink}}" target="_blank" rel="noopener noreferrer"
+                class="btn secondary-action d-inline-flex align-items-center">
+                <i class="bi bi-lightning me-2"></i>
+                Enquire Now For Best offers
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recommended Products -->
+<div class="recommended-section">
+  <h3 class="section-title mb-3">You May Also Like</h3>
+  <div class="recommended-scroll ms-3">
+    {{#each recommendations}}
+    <a href="/products/product-details/{{this._id}}" class="recommended-card text-decoration-none text-reset">
+      <div class="recommended-image">
+        <img src="{{this.imageUrl.[0]}}" alt="{{this.productName}}">
+      </div>
+      <div class="recommended-info">
+        <h6 class="recommended-title">{{this.productName}}</h6>
+      </div>
+    </a>
+    {{/each}}
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mainImage = document.getElementById("main-product-image");
+    const thumbnails = document.querySelectorAll(".thumbnail-item");
+
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener("click", function () {
+        const newImage = this.getAttribute("data-image");
+
+        // Update main image src + zoom attribute
+        mainImage.src = newImage;
+        mainImage.setAttribute("data-zoom", newImage);
+
+        // Toggle active border
+        thumbnails.forEach(t => t.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Product Name */
+  .product-name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 576px) {
+    .product-name {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* Pricing */
+  .sale-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #e63946;
+    margin-right: 10px;
+  }
+
+  .regular-price {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: #6c757d;
+  }
+
+  .thumbnail-grid {
+    justify-content: center;
+    /* Center thumbnails horizontally */
+    align-items: center;
+    /* Center thumbnails vertically */
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 10px;
+    padding: 8px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .thumbnail-grid::-webkit-scrollbar {
+    display: none;
+    /* Optional: hide scrollbar */
+  }
+
+  .thumbnail-wrapper {
+    flex: 0 0 auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: border 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .thumbnail-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 6px;
+    display: block;
+  }
+
+  .thumbnail-wrapper.active {
+    border-color: #222831 !important;
+  }
+
+  .thumbnail-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /* Buttons */
+  .btn {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px 16px;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  /* Horizontal Scroll */
+  .recommended-scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .recommended-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .recommended-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  /* Product Cards */
+  .recommended-card {
+    flex: 0 0 auto;
+    width: 150px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    scroll-snap-align: start;
+  }
+
+  .recommended-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .recommended-image {
+    width: 100%;
+    height: 100px;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+  }
+
+  .recommended-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .recommended-info {
+    padding: 10px;
+  }
+
+  .recommended-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* max 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>

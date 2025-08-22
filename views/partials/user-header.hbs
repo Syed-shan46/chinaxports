@@ -1,0 +1,456 @@
+<div class="">
+    <header id="header" class="header fixed-top">
+        <!-- Main Header -->
+        <div class="main-header">
+            <div class="container-fluid container-xl">
+                <div class="d-flex py-3 align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <!-- Hamburger Menu Button for Mobile -->
+                    <button class="btn btn-outline-secondary d-xl-none me-3" type="button" id="mobileHamburgerBtn"
+                        aria-label="Toggle sidebar">
+                        <i class="bi bi-list fs-3"></i>
+                    </button>
+
+                    <a href="/" class="logo d-flex align-items-center">
+                        <!-- Uncomment the line below if you also wish to use an image logo -->
+                        <!-- <img src="assets/img/logo.webp" alt=""> -->
+                        <h1 class="sitename">HIRA</h1>
+                    </a>
+
+                    <!-- Desktop Search -->
+                    <form class="search-form desktop-search-form position-relative" autocomplete="off"
+                        onsubmit="return false;">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for products or categories"
+                                id="navbarSearchInput" aria-label="Search">
+                            <button class="btn" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                        <div id="navbarSearchDropdown" class="dropdown-menu p-2" style="width:100%; top:110%; left:0;">
+                            <!-- Desktop search results injected here -->
+                        </div>
+                    </form>
+
+                    <!-- Actions -->
+                    <div class="header-actions d-flex align-items-center justify-content-end">
+                        <!-- Mobile Search Toggle -->
+                        <button class="header-action-btn mobile-search-toggle d-xl-none" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#mobileSearch" aria-expanded="false"
+                            aria-controls="mobileSearch">
+                            <i class="bi bi-search"></i>
+                        </button>
+
+                        <!-- Account -->
+                        <div class="dropdown account-dropdown">
+                            <div class="dropdown-menu">
+                                <div class="dropdown-header">
+                                    <h6>Welcome to <span class="sitename">FashionStore</span></h6>
+                                    <p class="mb-0">Access account &amp; manage orders</p>
+                                </div>
+                                <div class="dropdown-body">
+                                    <a class="dropdown-item d-flex align-items-center" href="account.html">
+                                        <i class="bi bi-person-circle me-2"></i>
+                                        <span>My Profile</span>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="account.html">
+                                        <i class="bi bi-bag-check me-2"></i>
+                                        <span>My Orders</span>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="account.html">
+                                        <i class="bi bi-heart me-2"></i>
+                                        <span>My Wishlist</span>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="account.html">
+                                        <i class="bi bi-gear me-2"></i>
+                                        <span>Settings</span>
+                                    </a>
+                                </div>
+                                <div class="dropdown-footer">
+                                    <a href="register.html" class="btn btn-primary w-100 mb-2">Sign In</a>
+                                    <a href="login.html" class="btn btn-outline-primary w-100">Register</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wishlist -->
+                        <a href="account.html" class="header-action-btn d-none d-md-block">
+                            <i class="bi bi-heart"></i>
+                            <span class="badge">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Search Form -->
+        <div class="collapse" id="mobileSearch">
+            <div class="container">
+                <form class="search-form position-relative" autocomplete="off" onsubmit="return false;"
+                    id="mobileSearchForm">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for products or categories"
+                            id="mobileSearchInput">
+                        <button class="btn" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <div id="mobileSearchDropdown" class="dropdown-menu p-2 w-100" style="top:110%; left:0;">
+                        <!-- Mobile search results injected here -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+</div>
+
+<div class="offcanvas offcanvas-start mobile-sidebar" tabindex="-1" id="mobileSidebar"
+    aria-labelledby="mobileSidebarLabel">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title fw-bold text-dark" id="mobileSidebarLabel">HIRA</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body px-0">
+        <!-- Tabs -->
+        <ul class="nav nav-tabs nav-fill trendy-tabs" id="mobileSidebarTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
+                    type="button" role="tab">Home</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="categories-tab" data-bs-toggle="tab" data-bs-target="#categories-tab-pane"
+                    type="button" role="tab">Categories</button>
+            </li>
+        </ul>
+
+        <!-- Tab content -->
+        <div class="tab-content trendy-tab-content p-3">
+            <!-- Home -->
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel">
+                <ul class="list-unstyled">
+                    <li><a href="/" class="menu-item"><i class="bi bi-house me-2"></i> Home</a></li>
+                    <li><a href="/store" class="menu-item"><i class="bi bi-shop me-2"></i>Store</a></li>
+                    <li><a href="/about-us" class="menu-item"><i class="bi bi-info-circle me-2"></i> About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="tab-pane fade" id="categories-tab-pane" role="tabpanel">
+                <ul class="list-unstyled">
+                    {{#each categories}}
+                    <li class="d-flex justify-content-between align-items-center ">
+                        <a href="/store?category={{this._id}}" class="menu-item text-decoration-none">
+                            <i class="bi bi-tag me-2"></i> {{this.name}}
+                        </a>
+                        <span class="badge bg-dark">{{this.productCount}}</span>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // Utility function to setup live search on given input + dropdown
+    function setupLiveSearch(inputId, dropdownId) {
+        const searchInput = document.getElementById(inputId);
+        const searchDropdown = document.getElementById(dropdownId);
+        let debounceTimer;
+
+        if (!searchInput || !searchDropdown) return;
+
+        searchInput.addEventListener('input', function () {
+            clearTimeout(debounceTimer);
+            const query = searchInput.value.trim();
+            if (!query) {
+                searchDropdown.classList.remove('show');
+                searchDropdown.innerHTML = '';
+                return;
+            }
+            debounceTimer = setTimeout(async () => {
+                try {
+                    const resp = await fetch(`/search?q=${encodeURIComponent(query)}`);
+                    const data = await resp.json();
+                    let html = '';
+
+                    if (data.products && data.products.length) {
+                        html += `<div class="fw-bold text-muted small mb-1 px-2">Products</div>`;
+                        data.products.forEach(prod => {
+                            const imgSrc = (prod.imageUrl && prod.imageUrl.length) ? prod.imageUrl[0] : '/images/no-image.png';
+                            html += `
+                <a href="/products/product-details/${prod._id}" class="dropdown-item d-flex align-items-center gap-2">
+                  <img src="${imgSrc}" style="height:32px; width:32px; object-fit:cover;" class="rounded" alt="">
+                  <span>${prod.productName}</span>
+                </a>
+              `;
+                        });
+                    }
+
+                    if (data.categories && data.categories.length) {
+                        html += `<div class="fw-bold text-muted small mt-2 mb-1 px-2">Categories</div>`;
+                        data.categories.forEach(cat => {
+                            html += `
+                <a href="/category/${cat._id}" class="dropdown-item">
+                  <i class="bi bi-folder2-open text-primary"></i> ${cat.name}
+                </a>
+              `;
+                        });
+                    }
+
+                    if (!html) html = `<span class="dropdown-item text-muted">No results found</span>`;
+
+                    searchDropdown.innerHTML = html;
+                    searchDropdown.classList.add('show');
+                } catch (error) {
+                    searchDropdown.innerHTML = `<span class="dropdown-item text-danger">Server error</span>`;
+                    searchDropdown.classList.add('show');
+                }
+            }, 300);
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!searchDropdown.contains(e.target) && e.target !== searchInput) {
+                searchDropdown.classList.remove('show');
+            }
+        });
+    }
+
+    // Initialize both desktop and mobile live searches
+    document.addEventListener('DOMContentLoaded', () => {
+        setupLiveSearch('navbarSearchInput', 'navbarSearchDropdown');    // desktop
+        setupLiveSearch('mobileSearchInput', 'mobileSearchDropdown');    // mobile
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebar = new bootstrap.Offcanvas(document.getElementById('mobileSidebar'));
+
+        document.getElementById('mobileHamburgerBtn').addEventListener('click', () => {
+            sidebar.show();
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.getElementById('header');
+        let lastScrollTop = 0;
+        let ticking = false;
+
+        window.addEventListener('scroll', function () {
+            const currentScroll = window.scrollY;
+
+            if (!ticking) {
+                window.requestAnimationFrame(function () {
+                    // Add shadow when scrolled
+                    if (currentScroll > 20) {
+                        header.classList.add('header-scrolled');
+                    } else {
+                        header.classList.remove('header-scrolled');
+                    }
+
+                    // Show/hide based on scroll direction
+                    if (currentScroll > lastScrollTop && currentScroll > 100) {
+                        // Scrolling down
+                        header.classList.add('header-hidden');
+                    } else {
+                        // Scrolling up
+                        header.classList.remove('header-hidden');
+                    }
+
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
+        });
+    });
+</script>
+
+<script>
+
+</script>
+
+
+
+
+<style>
+    /* Header Animation */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+        background: #fff;
+        /* Or your theme background */
+    }
+
+    /* When scrolling down — hide header */
+    .header-hidden {
+        transform: translateY(-100%);
+    }
+
+    /* Optional: Add shadow when scrolled */
+    .header-scrolled {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+
+    .header-hidden {
+        transform: translateY(-100%);
+    }
+
+    .nav-tabs .nav-link {
+        border: none !important;
+        /* Remove all default borders */
+        border-bottom: 2px solid transparent;
+        /* Reserve space for underline */
+        background: none !important;
+        /* Remove background */
+        color: black;
+        font-weight: 500;
+    }
+
+    .nav-tabs .nav-link.active {
+        border: none !important;
+        /* Ensure no extra border */
+        border-bottom: 2px solid #0d6efd !important;
+        /* Only bottom line */
+        color: #0d6efd !important;
+        /* Active text color */
+        background: none !important;
+    }
+
+    .nav-link.active {
+        color: #0d6efd !important;
+    }
+
+    .nav-link {
+        color: black;
+    }
+
+    .search-form .dropdown-menu {
+        display: none;
+        max-height: 400px;
+        overflow-y: auto;
+        border-radius: 12px;
+        box-shadow: 0 6px 24px rgba(60, 60, 60, 0.08);
+        min-width: 300px;
+    }
+
+    .search-form .dropdown-menu.show {
+        display: block;
+    }
+
+    #mobileHamburgerBtn {
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0;
+        /* optional: adjust padding if desired */
+    }
+
+    /* Force custom width */
+    .offcanvas-start.mobile-sidebar {
+        width: 70vw !important;
+        /* 👈 set custom width */
+        max-width: 420px;
+        /* keep a reasonable max for larger screens */
+        border-radius: 0 20px 20px 0;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(18px);
+        box-shadow: 6px 0 24px rgba(0, 0, 0, 0.12);
+        transition: all 0.35s ease-in-out;
+    }
+
+    .offcanvas .btn-close:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+
+
+    /* Sidebar Modern Look */
+    .mobile-sidebar {
+        width: 75vw;
+        max-width: 420px;
+        border-radius: 0 20px 20px 0;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(18px);
+        box-shadow: 6px 0 24px rgba(0, 0, 0, 0.12);
+        transition: all 0.35s ease-in-out;
+    }
+
+    /* Tabs */
+    .trendy-tabs .nav-link {
+        border: none !important;
+        color: #555;
+        font-weight: 500;
+        padding: 12px;
+        transition: color 0.3s;
+    }
+
+    .trendy-tabs .nav-link.active {
+        color: #0d6efd;
+        border-bottom: 2px solid #0d6efd !important;
+    }
+
+    /* Menu items */
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        border-radius: 10px;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .menu-item:hover {
+        background: rgba(13, 110, 253, 0.08);
+        color: #0d6efd;
+        transform: translateX(4px);
+    }
+
+    /* Smooth content fade-in */
+    .trendy-tab-content .tab-pane {
+        animation: fadeSlideUp 0.35s ease;
+    }
+
+    @keyframes fadeSlideUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Scroll styling */
+    .offcanvas-body {
+        scrollbar-width: thin;
+        scrollbar-color: #ccc transparent;
+    }
+
+    .offcanvas-body::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .offcanvas-body::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 6px;
+    }
+</style>

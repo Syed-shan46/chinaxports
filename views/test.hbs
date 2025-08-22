@@ -1,0 +1,181 @@
+<section id="product-details" class="product-details section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4">
+
+      <!-- Product Gallery -->
+      <div class="col-lg-7" data-aos="zoom-in" data-aos-delay="150">
+        <div class="product-gallery">
+
+          <!-- Main Image -->
+          <div class="main-showcase mb-0">
+            <div class="image-zoom-container">
+              <img src="{{product.imageUrl.[0]}}" alt="{{product.productName}}"
+                class="img-fluid main-product-image drift-zoom shadow-sm rounded" id="main-product-image"
+                data-zoom="{{product.imageUrl.[0]}}">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thumbnails -->
+      <div class="thumbnail-grid ms-3 mt-2 align-items-center">
+        {{#each product.imageUrl}}
+        <div class="thumbnail-wrapper thumbnail-item{{#if @first}} active{{/if}}" data-image="{{this}}">
+          <img src="{{this}}" alt="Thumbnail {{@index}}" class="img-fluid rounded">
+        </div>
+        {{/each}}
+      </div>
+
+      <!-- Product Details -->
+
+      <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+        <div class="product-details">
+
+          <!-- Product Name -->
+          <h1 class="product-name">{{product.productName}}</h1>
+
+          <!-- Price Section -->
+          {{!-- <div class="pricing-section mb-3">
+            <div class="price-display">
+              <span class="sale-price">${{product.price}}</span>
+              {{#if product.oldPrice}}
+              <span class="regular-price">${{product.oldPrice}}</span>
+              {{/if}}
+            </div>
+          </div> --}}
+
+          <!-- Action Buttons -->
+          <div class="purchase-section">
+            <div class="action-buttons d-flex gap-2">
+              {{!-- <button class="btn btn-primary flex-fill">
+                <i class="bi bi-bag-plus"></i> Enquire Now For Best offers
+              </button> --}}
+              <button class="btn secondary-action">
+                <i class="bi bi-lightning"></i>
+                Enquire Now For Best offers
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mainImage = document.getElementById("main-product-image");
+    const thumbnails = document.querySelectorAll(".thumbnail-item");
+
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener("click", function () {
+        const newImage = this.getAttribute("data-image");
+
+        // Update main image src + zoom attribute
+        mainImage.src = newImage;
+        mainImage.setAttribute("data-zoom", newImage);
+
+        // Toggle active border
+        thumbnails.forEach(t => t.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Product Name */
+  .product-name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 576px) {
+    .product-name {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* Pricing */
+  .sale-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #e63946;
+    margin-right: 10px;
+  }
+
+  .regular-price {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: #6c757d;
+  }
+
+  .thumbnail-grid {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 10px;
+    padding: 8px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    max-width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  .thumbnail-grid::-webkit-scrollbar {
+    display: none;
+    /* Optional: hide scrollbar */
+  }
+
+  .thumbnail-wrapper {
+    flex: 0 0 auto;
+    width: 70px;
+    height: 70px;
+    border: 2px solid #ddd !important;
+    border-radius: 8px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: border 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    box-sizing: border-box;
+  }
+
+  .thumbnail-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 6px;
+    display: block;
+  }
+
+  .thumbnail-wrapper.active {
+    border-color: #0d6efd !important;
+    /* 🔵 active border */
+  }
+
+  .thumbnail-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /* Buttons */
+  .btn {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px 16px;
+  }
+</style>

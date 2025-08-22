@@ -19,7 +19,7 @@ export async function getProductDetail(req, res) {
         // Replace product.images with limited version
         product.imageUrl = images;
 
-        const message = encodeURIComponent(`Hello! I’m interested in learning more about the product "${product.productName}". Could you please provide additional details and available offers? Thank you!`);
+        const message = encodeURIComponent(`I want to know more about ${product.productName}`);
         const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
         // Fetch other products from the same category, excluding the current product

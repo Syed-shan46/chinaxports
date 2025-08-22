@@ -1745,12 +1745,12 @@ section,
 --------------------------------------------------------------*/
 .hero {
   padding: 140px 0 60px 0;
-  background: linear-gradient(135deg, var(--surface-color) 0%, color-mix(in srgb, var(--accent-color), transparent 95%) 100%);
-  position: relative;
+  /* background: linear-gradient(135deg, var(--surface-color) 0%, color-mix(in srgb, var(--accent-color), transparent 95%) 100%);
+  position: relative; */
   overflow: hidden;
 }
 
-.hero::before {
+/* .hero::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1759,7 +1759,7 @@ section,
   bottom: 0;
   background: radial-gradient(circle at 20% 80%, color-mix(in srgb, var(--accent-color), transparent 90%) 0%, transparent 50%);
   pointer-events: none;
-}
+} */
 
 .hero .hero-content {
   padding: 20px 0;
@@ -2267,7 +2267,6 @@ section,
 # Best Sellers Section
 --------------------------------------------------------------*/
 .best-sellers {
-  padding-top: 60px;
   padding-bottom: 30px;
 }
 

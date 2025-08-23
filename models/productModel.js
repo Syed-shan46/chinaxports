@@ -21,6 +21,19 @@ const ProductSchema = new mongoose.Schema({
     required: true,
     min: 0
   },
+  minQty: {
+    type: Number,
+    required: true,
+    min: 1,
+    default: 1,
+  },
+  keywords: [
+    {
+      key: { type: String, required: true, trim: true },
+      value: { type: String, required: true, trim: true }
+    }
+  ],
+
   tags: {
     type: [String],
     default: []

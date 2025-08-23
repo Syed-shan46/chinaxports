@@ -1,6 +1,6 @@
-<section id="product-details" class="product-details section">
+<section id="product-details" class="product-details section mt-lg-5 pt-lg-5">
   <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="row g-4 mt-lg-5 pt-lg-5 align-items-start justify-content-center">
+    <div class="row g-4 align-items-start justify-content-center">
 
       <!-- Product Gallery -->
       <div class="col-lg-7" data-aos="zoom-in" data-aos-delay="150">
@@ -33,6 +33,12 @@
           <!-- Product Name -->
           <h1 class="product-name">{{product.productName}}</h1>
 
+          <!-- Minimum Quantity -->
+          <div class="min-qty mb-3">
+            <strong>MOQ:</strong>
+            <span class="badge bg-dark text-white px-3 py-2">{{product.minQty}}</span>
+          </div>
+
           <!-- Price Section -->
           {{!-- <div class="pricing-section mb-3">
             <div class="price-display">
@@ -56,6 +62,26 @@
               </a>
             </div>
           </div>
+
+
+
+          <!-- Keywords Section -->
+          {{#if processedKeywords.length}}
+          <div class="keywords-section mb-4">
+            <h5>Product Keywords</h5>
+            <table class="table table-sm table-bordered w-auto">
+              <tbody>
+                {{#each processedKeywords}}
+                <tr>
+                  <th style="width: 30%; font-weight: 600;">{{this.key}}</th>
+                  <td>{{this.value}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          {{/if}}
+
 
         </div>
       </div>
@@ -263,5 +289,18 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .product-details .min-qty {
+    font-size: 1.1rem;
+  }
+
+  .product-details table th {
+    background-color: #f7f7f7;
+    text-align: left;
+  }
+
+  .product-details table td {
+    vertical-align: middle;
   }
 </style>

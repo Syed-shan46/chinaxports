@@ -1,5 +1,5 @@
 import Product from '../models/productModel.js'; // ✅
-const whatsappNumber = '919747304599'; // your number
+const whatsappNumber = '8615669528151'; // your number
 
 
 export async function getProductDetail(req, res) {
@@ -8,7 +8,6 @@ export async function getProductDetail(req, res) {
         const productId = req.params.id;
         const product = await Product.findById(productId).populate('category', 'name');
         if (!product) return res.status(404).send('Product not found');
-
 
 
         // ✅ Only pass the first 4 images
@@ -30,7 +29,12 @@ export async function getProductDetail(req, res) {
             .limit(4) // or whatever number you want to show
             .lean();
 
-        res.render('user/product-details', { product, recommendations, whatsappLink });
+        const processedKeywords = product.keywords ? product.keywords.slice(0, 20) : [];
+
+        console.log('Product minQty:', product.minQty);
+
+
+        res.render('user/product-details', { product, recommendations, whatsappLink, processedKeywords });
     } catch (error) {
         res.status(500).send('Server error');
     }
@@ -40,13 +44,25 @@ export async function getProductDetail(req, res) {
 
 export async function uploadProduct(req, res) {
     try {
-        const { productName, description, price, tags, trending, special, handpicked, category } = req.body;
+        const { productName, description, price, tags, trending, special, handpicked, category, minQty, keywordsKeys = [],   // Expect arrays of keys and values
+            keywordsValues = [] } = req.body;
         // Safely parse tags whether it's a string or array
         let tagsArr = [];
         if (Array.isArray(tags)) {
             tagsArr = tags;
         } else if (typeof tags === "string") {
             tagsArr = tags.split(",").map(tag => tag.trim()).filter(Boolean);
+        }
+
+        // Process keywords to array of objects
+        // Convert non-array inputs into arrays for consistency
+        let keysArr = Array.isArray(keywordsKeys) ? keywordsKeys : [keywordsKeys];
+        let valuesArr = Array.isArray(keywordsValues) ? keywordsValues : [keywordsValues];
+        let keywordsArr = [];
+        for (let i = 0; i < keysArr.length; i++) {
+            if (keysArr[i] && valuesArr[i]) {
+                keywordsArr.push({ key: keysArr[i].trim(), value: valuesArr[i].trim() });
+            }
         }
 
         // Get Multer-uploaded image links from req.files
@@ -58,17 +74,20 @@ export async function uploadProduct(req, res) {
             return res.status(400).json({ error: "At least one product image is required" });
         }
 
+
         // Create new product document
         const newProduct = new Product({
             productName,
             description,
             category,
             price,
+            minQty: Number(minQty) || 1,
             tags: tagsArr, // assign processed tags array here
             trending: trending === "true" || trending === true,
             special: special === "true" || special === true,
             handpicked: handpicked === "true" || handpicked === true,
             imageUrl: images, // Save array of image URLs
+            keywords: keywordsArr,
         });
 
         await newProduct.save();

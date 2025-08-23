@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class="container my-5 mt-5 pt-3">
     <div class="row justify-content-center">
         <div class="col-md-6">
 
@@ -17,7 +17,6 @@
                     <!-- Preview images here -->
                     <div id="imagePreviews" class="mt-2 d-flex gap-2"></div>
                 </div>
-
 
                 <!-- Product Name -->
                 <div class="mb-3">
@@ -50,6 +49,21 @@
                     <input type="number" min="0" step="0.01" name="price" class="form-control" id="productPrice"
                         placeholder="Enter price" required>
                 </div>
+
+                <div id="keywords-container">
+                    <div class="keyword-pair">
+                        <input type="text" name="keywordsKeys" placeholder="Key" required />
+                        <input type="text" name="keywordsValues" placeholder="Value" required />
+                    </div>
+                </div>
+                <button type="button" id="add-keyword-btn">Add Keyword</button>
+
+
+                <div class="mb-3">
+                    <label for="minQty" class="form-label">Minimum Quantity</label>
+                    <input type="number" name="minQty" id="minQty" class="form-control" min="1" value="1" required>
+                </div>
+
 
                 <!-- Product Tags -->
                 <div class="mb-3">
@@ -94,6 +108,24 @@
                 imagePreviews.appendChild(img);
             };
             reader.readAsDataURL(file);
+        });
+    });
+</script>
+
+<script>
+    document.getElementById('add-keyword-btn').addEventListener('click', function () {
+        const container = document.getElementById('keywords-container');
+        const newPair = document.createElement('div');
+        newPair.classList.add('keyword-pair');
+        newPair.innerHTML = `
+      <input type="text" name="keywordsKeys" placeholder="Key" required />
+      <input type="text" name="keywordsValues" placeholder="Value" required />
+      <button type="button" class="remove-keyword-btn">Remove</button>
+    `;
+        container.appendChild(newPair);
+
+        newPair.querySelector('.remove-keyword-btn').addEventListener('click', function () {
+            newPair.remove();
         });
     });
 </script>

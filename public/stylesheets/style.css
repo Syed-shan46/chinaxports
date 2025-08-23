@@ -1325,6 +1325,12 @@ h6 {
   }
 }
 
+.menu-item:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+  color: #111 !important;
+  transform: translateX(4px) !important;
+}
+
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
@@ -1713,38 +1719,55 @@ section,
 --------------------------------------------------------------*/
 .section-title {
   text-align: center;
+  padding: 23px 0;
   position: relative;
 }
 
 .section-title h2 {
+  font-size: 32px;
   font-weight: 700;
+  text-transform: uppercase;
   margin-bottom: 20px;
-  padding-bottom: 13px;
+  padding-bottom: 0;
   position: relative;
+  z-index: 2;
 }
 
-.section-title h2:after {
-  content: "";
+.section-title span {
   position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: var(--accent-color);
+  top: 4px;
+  color: color-mix(in srgb, var(--heading-color), transparent 95%);
   left: 0;
   right: 0;
-  bottom: 0;
-  margin: auto;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 52px;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 .section-title p {
   margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 575px) {
+  .section-title h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  .section-title span {
+    font-size: 38px;
+  }
 }
 
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  padding: 140px 0 60px 0;
+  /* padding: 140px 0 60px 0; */
   /* background: linear-gradient(135deg, var(--surface-color) 0%, color-mix(in srgb, var(--accent-color), transparent 95%) 100%);
   position: relative; */
   overflow: hidden;
@@ -2261,8 +2284,6 @@ section,
   }
 }
 
-
-
 /*--------------------------------------------------------------
 # Best Sellers Section
 --------------------------------------------------------------*/
@@ -2573,7 +2594,178 @@ section,
   }
 }
 
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+/* .services {
+  padding: 80px 0;
+} */
 
+.services .intro-content .section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  color: var(--accent-color);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.services .intro-content .section-badge i {
+  font-size: 12px;
+}
+
+.services .intro-content .section-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .services .intro-content .section-heading {
+    font-size: 2.2rem;
+  }
+}
+
+.services .intro-content .section-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin-bottom: 2rem;
+}
+
+.services .intro-content .cta-button {
+  display: inline-block;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+.services .intro-content .cta-button:hover {
+  background: color-mix(in srgb, var(--accent-color), black 10%);
+  color: var(--contrast-color);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+
+.services .hero-visual {
+  position: relative;
+}
+
+.services .hero-visual img {
+  border-radius: 20px;
+  box-shadow: 0 20px 60px color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+@media (max-width: 991px) {
+  .services .hero-visual {
+    margin-top: 3rem;
+  }
+}
+
+.services .services-grid .service-card {
+  background: var(--surface-color);
+  padding: 2rem;
+  border-radius: 15px;
+  height: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--default-color), transparent 88%);
+  position: relative;
+  overflow: hidden;
+}
+
+.services .services-grid .service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.services .services-grid .service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.services .services-grid .service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.services .services-grid .service-card:hover .card-number span {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.services .services-grid .service-card .card-number {
+  margin-bottom: 1.5rem;
+}
+
+.services .services-grid .service-card .card-number span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  color: var(--accent-color);
+  border-radius: 15px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.services .services-grid .service-card .card-content .service-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.services .services-grid .service-card .card-content .service-title a {
+  color: var(--heading-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.services .services-grid .service-card .card-content .service-title a:hover {
+  color: var(--accent-color);
+}
+
+.services .services-grid .service-card .card-content .service-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+
+
+  .services .intro-content {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .services .services-grid .service-card {
+    padding: 1.5rem;
+  }
+}
 
 /*--------------------------------------------------------------
 # Product Details Section
@@ -3492,6 +3684,182 @@ section,
 
 
 /*--------------------------------------------------------------
+# Stats Section
+--------------------------------------------------------------*/
+.stats {
+  padding-top: 30px;
+  --tile-radius: 10px;
+  --tile-border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  --tile-shadow: 0 2px 0 color-mix(in srgb, var(--default-color), transparent 92%);
+  padding-bottom: 30px;
+}
+
+.stats .stats-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 1200px) {
+  .stats .stats-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .stats .stats-board {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stats .stat-tile {
+  background: color-mix(in srgb, var(--surface-color), var(--accent-color) 0%);
+  border: var(--tile-border);
+  border-radius: var(--tile-radius);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 132px;
+  box-shadow: var(--tile-shadow);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.stats .stat-tile:hover {
+  border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
+  transform: translateY(-2px);
+}
+
+.stats .stat-tile .tile-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.stats .stat-tile .tile-head i {
+  font-size: 24px;
+  color: var(--accent-color);
+}
+
+.stats .stat-tile .tile-head .label .title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+.stats .stat-tile .tile-head .label .hint {
+  display: block;
+  margin-top: 2px;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.stats .stat-tile .tile-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.stats .stat-tile .tile-metric .metric-number {
+  display: inline-block;
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  font-weight: 600;
+  line-height: 1;
+  font-size: 36px;
+}
+
+@media (max-width: 576px) {
+  .stats .stat-tile .tile-metric .metric-number {
+    font-size: 32px;
+  }
+}
+
+.stats .stat-tile .tile-metric .metric-suffix {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.stats .stat-tile:nth-child(1) {
+  border-top: 3px solid color-mix(in srgb, var(--accent-color), transparent 30%);
+}
+
+.stats .stat-tile:nth-child(2) {
+  border-top: 3px solid color-mix(in srgb, #0abf53, transparent 30%);
+}
+
+.stats .stat-tile:nth-child(2) .tile-head i {
+  color: color-mix(in srgb, #0abf53, transparent 0%);
+}
+
+.stats .stat-tile:nth-child(3) {
+  border-top: 3px solid color-mix(in srgb, #ff7e00, transparent 30%);
+}
+
+.stats .stat-tile:nth-child(3) .tile-head i {
+  color: color-mix(in srgb, #ff7e00, transparent 0%);
+}
+
+.stats .stat-tile:nth-child(4) {
+  border-top: 3px solid color-mix(in srgb, #6f42c1, transparent 30%);
+}
+
+.stats .stat-tile:nth-child(4) .tile-head i {
+  color: color-mix(in srgb, #6f42c1, transparent 0%);
+}
+
+.stats .legend-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+  padding: 10px 12px;
+  border: 1px dashed color-mix(in srgb, var(--default-color), transparent 80%);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface-color), var(--default-color) 2%);
+}
+
+@media (max-width: 576px) {
+  .stats .legend-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+.stats .legend-row .legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats .legend-row .legend-item .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.stats .legend-row .legend-item .dot.dot-primary {
+  background: var(--accent-color);
+}
+
+.stats .legend-row .legend-item .dot.dot-neutral {
+  background: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.stats .legend-row .legend-item .text {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+
+/*--------------------------------------------------------------
 # Cards Section
 --------------------------------------------------------------*/
 .cards {
@@ -4386,3 +4754,27 @@ section,
   border: 1px solid #ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 45px;
+  height: 45px;
+  border-radius: 25px;
+  /* only fade, not color */
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+

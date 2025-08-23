@@ -11,4 +11,12 @@ router.get('/about-us', (req, res) => {
     res.render('user/about-us', { title: 'About Us' });
 });
 
+router.get('/wechat-qr', (req, res) => {
+    res.render('user/wechat-qr', { title: 'WeChat QR Code' });
+});
+
+router.get('/contact-us', (req, res) => {
+    res.render('user/contact-us');
+});
+
 module.exports = router;

@@ -1,5 +1,5 @@
 <section id="hero" class="hero section">
-    <div class="container mt-5 pt-3" data-aos="fade-up" data-aos-delay="500">
+    <div class="container mt-3 pt-5" data-aos="fade-up" data-aos-delay="500">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
                 <div class="hero-content">
@@ -15,8 +15,8 @@
                         </a>
 
                         <!-- Enquire Now Button -->
-                        <a href="enquiry.html" class="btn btn-outline-dark px-4 py-2 rounded-3">
-                            <i class="bi bi-chat-dots me-2"></i> Enquire Now
+                        <a href="/contact-us" class="btn btn-outline-dark px-4 py-2 rounded-3">
+                            <i class="bi bi-chat-dots me-2"></i> Contact Us
                         </a>
                     </div>
 
@@ -47,15 +47,20 @@
             </div>
         </div>
     </div>
-
 </section><!-- /Hero Section -->
 
-<!-- Best Sellers Section -->
+
+
+<!-- Enquire Now Button -->
+
+
+<!-- Best Deals Section -->
 <section id="best-sellers" class="best-sellers section">
 
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-        <h2>Handpicked for you</h2>
+        <span class="description-title">Best Deals</span>
+        <h2>Best Deals</h2>
     </div><!-- End Section Title -->
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -72,9 +77,9 @@
                             <img src="{{this.imageUrl.[0]}}" alt="{{this.productName}}" class="img-fluid"
                                 loading="eager" />
 
-                            <button class="enquire-btn">
+                            {{!-- <button class="enquire-btn">
                                 <i class="bi bi-chat-dots me-1"></i> Enquire
-                            </button>
+                            </button> --}}
                         </div>
                         <div lass="product-info">
                             <div class="product-category mt-2">{{this.category.name}}</div>
@@ -98,11 +103,14 @@
 
 </section><!-- /Best Sellers Section -->
 
-
+<div class="container d-flex justify-content-center">
+    <a href="/store" class="btn btn-outline-dark px-4 py-2 rounded-3">
+        <i class="bi bi-box-seam me-2"></i> View All Products
+    </a>
+</div>
 
 <!-- Cards Section -->
 <section id="cards" class="cards section">
-
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
@@ -113,6 +121,7 @@
                         <i class="bi bi-fire"></i> Trending Now
                     </h3>
                     <div class="product-list">
+                        {{#if trendingProducts.length}}
                         {{#each trendingProducts}}
                         <a href="/products/product-details/{{this._id}}" class="product-card-link">
 
@@ -134,6 +143,11 @@
                             </div>
                         </a>
                         {{/each}}
+                        {{else}}
+                        <center>
+                            <p>No trending products available at the moment.</p>
+                        </center>
+                        {{/if}}
                     </div>
                 </div>
             </div>
@@ -145,6 +159,7 @@
                         <i class="bi bi-star"></i> Special
                     </h3>
                     <div class="product-list">
+                        {{#if specialProducts.length}}
                         {{#each specialProducts}}
                         <a href="/products/product-details/{{this._id}}" class="product-card-link">
                             <div class="product-card">
@@ -168,6 +183,13 @@
                             </div>
                         </a>
                         {{/each}}
+
+                        {{else}}
+                        <center>
+                            <p>No trending products available at the moment.</p>
+                        </center>
+                        {{/if}}
+
                     </div>
                 </div>
             </div>
@@ -178,6 +200,7 @@
                         <i class="bi bi-dice-5"></i> Random Picks
                     </h3>
                     <div class="product-list">
+                        {{#if handpickedProducts}}
                         {{#each handpickedProducts}}
                         <a href="/products/product-details/{{this._id}}" class="product-card-link">
                             <div class="product-card">
@@ -201,6 +224,11 @@
                             </div>
                         </a>
                         {{/each}}
+                        {{else}}
+                        <center>
+                            <p>No trending products available at the moment.</p>
+                        </center>
+                        {{/if}}
                     </div>
                 </div>
             </div>
@@ -208,6 +236,196 @@
 
     </div>
 </section><!-- /Cards Section -->
+
+<!-- Services Section -->
+<section id="services" class="services section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <span class="description-title">Services</span>
+        <h2>Services</h2>
+        <p>Your trusted partner in sourcing, importing, and delivering quality products worldwide.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="intro-content" data-aos="fade-right" data-aos-delay="100">
+                    <div class="section-badge mb-3" data-aos="zoom-in" data-aos-delay="50">
+                        <i class="bi bi-star-fill"></i>
+                        <span>WHAT WE DO</span>
+                    </div>
+                    <h2 class="section-heading mb-4">Connecting Markets with Quality Imports</h2>
+                    <p class="section-description mb-4">We facilitate smooth trade flows by ensuring competitive
+                        pricing, reliable shipping, and end-to-end support for your import needs.</p>
+                    <a href="/contact-us" class="cta-button" data-aos="fade-right" data-aos-delay="200">
+                        Contact Our Experts
+                    </a>
+
+
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="hero-visual" data-aos="fade-left" data-aos-delay="150">
+                        <img src="/images/web/transport-logistics-img.jpg" alt="Global Import Services"
+                            class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-grid mt-5">
+                <div class="row g-4">
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-card">
+                            <div class="card-number"><span>01</span></div>
+                            <div class="card-content">
+                                <h5 class="service-title"><a href="#">Product Sourcing</a></h5>
+                                <p class="service-description">Sourcing high-quality products directly from trusted
+                                    manufacturers and suppliers in China and beyond.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Card -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-card">
+                            <div class="card-number"><span>02</span></div>
+                            <div class="card-content">
+                                <h5 class="service-title"><a href="#">Quality Inspection</a></h5>
+                                <p class="service-description">Thorough inspections to ensure products meet industry
+                                    standards and your specifications before shipment.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Card -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-card">
+                            <div class="card-number"><span>03</span></div>
+                            <div class="card-content">
+                                <h5 class="service-title"><a href="#">Logistics & Shipping</a></h5>
+                                <p class="service-description">Reliable freight forwarding, customs clearance, and
+                                    door-to-door delivery tailored to your timeline.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Card -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-card">
+                            <div class="card-number"><span>04</span></div>
+                            <div class="card-content">
+                                <h5 class="service-title"><a href="#">Supply Chain Management</a></h5>
+                                <p class="service-description">Optimizing your entire supply chain to reduce costs,
+                                    improve
+                                    efficiency, and ensure consistent product availability.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Card -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-card">
+                            <div class="card-number"><span>05</span></div>
+                            <div class="card-content">
+                                <h5 class="service-title"><a href="#">Customs Documentation</a></h5>
+                                <p class="service-description">Handling all import paperwork and compliance to
+                                    streamline
+                                    customs procedures and avoid delays.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Card -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-card">
+                            <div class="card-number"><span>06</span></div>
+                            <div class="card-content">
+                                <h5 class="service-title"><a href="#">After-Sales Support</a></h5>
+                                <p class="service-description">Dedicated support to address post-delivery issues,
+                                    warranties, or reorders, ensuring customer satisfaction.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Card -->
+
+                </div>
+            </div>
+
+        </div>
+</section><!-- /Services Section -->
+
+<!-- Stats Section -->
+<section id="stats" class="stats section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
+                <div class="stats-board">
+                    <article class="stat-tile" data-aos="fade-up" data-aos-delay="150">
+                        <div class="tile-head">
+                            <i class="bi bi-award"></i>
+                            <div class="label">
+                                <h6 class="title"> Years of Experience</h6>
+                                <small class="hint">Decades of trusted expertise</small>
+                            </div>
+                        </div>
+                        <div class="tile-metric">
+                            <span class="metric-number purecounter" data-purecounter-start="0" data-purecounter-end="10"
+                                data-purecounter-duration="1"></span>
+                            <span class="metric-suffix">+</span>
+                        </div>
+                    </article><!-- End Stat Tile -->
+
+                    <article class="stat-tile" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tile-head">
+                            <i class="bi-globe2"></i>
+                            <div class="label">
+                                <h6 class="title">Countries Served</h6>
+                                <small class="hint">Global network, local trust</small>
+                            </div>
+                        </div>
+                        <div class="tile-metric">
+                            <span class="metric-number purecounter" data-purecounter-start="0" data-purecounter-end="50"
+                                data-purecounter-duration="1"></span>
+                            <span class="metric-suffix">+</span>
+                        </div>
+                    </article><!-- End Stat Tile -->
+
+                    <article class="stat-tile" data-aos="fade-up" data-aos-delay="250">
+                        <div class="tile-head">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                            <div class="label">
+                                <h6 class="title">Satisfied Clients</h6>
+                                <small class="hint">Strong bonds, lasting trust</small>
+                            </div>
+                        </div>
+                        <div class="tile-metric">
+                            <span class="metric-number purecounter" data-purecounter-start="0"
+                                data-purecounter-end="500" data-purecounter-duration="1"></span>
+                            <span class="metric-suffix">+</span>
+                        </div>
+                    </article><!-- End Stat Tile -->
+
+                    <article class="stat-tile" data-aos="fade-up" data-aos-delay="300">
+                        <div class="tile-head">
+                            <i class="bi bi-box-seam"></i>
+                            <div class="label">
+                                <h6 class="title">Products Delivered</h6>
+                                <small class="hint">On time, every time</small>
+                            </div>
+                        </div>
+                        <div class="tile-metric">
+                            <span class="metric-number purecounter" data-purecounter-start="0"
+                                data-purecounter-end="1000" data-purecounter-duration="1"></span>
+                            <span class="metric-suffix">+</span>
+                        </div>
+                    </article><!-- End Stat Tile -->
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</section><!-- /Stats Section -->
 
 <style>
     .enquire-btn {
@@ -238,6 +456,4 @@
         font-size: 1rem;
         vertical-align: middle;
     }
-
-    
 </style>

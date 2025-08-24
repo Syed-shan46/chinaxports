@@ -1,4 +1,4 @@
-<section id="product-details" class="product-details section mt-lg-5 pt-">
+<section id="product-details" class="product-details section mt-lg-5">
   <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="row g-4 align-items-start justify-content-center">
 
@@ -20,7 +20,7 @@
             {{#each product.imageUrl}}
             <div class="thumbnail-wrapper thumbnail-item{{#if @first}} active{{/if}}" data-image="{{this}}">
               <img src="{{this}}" alt="Thumbnail {{@index}}" class="img-fluid rounded">
-            </div>y
+            </div>
             {{/each}}
           </div>
         </div>
@@ -33,21 +33,21 @@
           <!-- Product Name -->
           <h1 class="product-name">{{product.productName}}</h1>
 
-          <!-- Minimum Quantity -->
-          <div class="min-qty mb-3">
-            <strong>MOQ:</strong>
-            <span class="badge bg-dark text-white px-3 py-2">{{product.minQty}}</span>
-          </div>
-
           <!-- Price Section -->
-          {{!-- <div class="pricing-section mb-3">
+          <div class="pricing-section ">
             <div class="price-display">
               <span class="sale-price">${{product.price}}</span>
               {{#if product.oldPrice}}
               <span class="regular-price">${{product.oldPrice}}</span>
               {{/if}}
             </div>
-          </div> --}}
+          </div>
+
+          <!-- Minimum Quantity -->
+          <div class="min-qty mb-3">
+            <strong>MOQ:</strong>
+            <span class="badge bg-dark text-white px-3 py-2">{{product.minQty}}</span>
+          </div>
 
           <!-- Action Buttons -->
           <div class="purchase-section">

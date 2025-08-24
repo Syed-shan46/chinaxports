@@ -4418,13 +4418,12 @@ section,
 }
 
 .category-product-list .product-category {
-  font-size: 0.875rem;
+  font-size: 12px;
   color: color-mix(in srgb, var(--default-color), transparent 40%);
 }
 
 .category-product-list .product-title {
   font-size: 1.125rem;
-  margin-bottom: 1rem;
 }
 
 .category-product-list .product-title a {
@@ -4496,7 +4495,6 @@ section,
 
   .category-product-list .product-title {
     font-size: 1rem;
-    margin-bottom: 0.75rem;
   }
 
   .category-product-list .product-price {
@@ -4777,4 +4775,3 @@ section,
   color: var(--contrast-color);
   line-height: 0;
 }
-

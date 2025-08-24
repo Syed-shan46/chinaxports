@@ -1936,13 +1936,24 @@ section,
 .hero .hero-visual .floating-elements .floating-card {
   position: absolute;
   background: var(--surface-color);
-  padding: 16px 20px;
-  border-radius: 8px;
-  box-shadow: 0 8px 32px color-mix(in srgb, var(--default-color), transparent 85%);
+  width: 50px;
+  /* Set the card’s width */
+  height: 50px;
+  /* Set the card’s height (same as width for circle) */
+  border-radius: 50%;
+  /* Makes it a circle */
+  padding: 0;
+  /* Remove padding for perfect circle */
   display: flex;
+  flex-direction: column;
+  /* Stack icon and label vertically */
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  /* Center them */
+  gap: 6px;
+  /* Space between icon and text */
   animation: floating 3s ease-in-out infinite;
+  text-align: center;
 }
 
 .hero .hero-visual .floating-elements .floating-card i {
@@ -1958,14 +1969,14 @@ section,
 }
 
 .hero .hero-visual .floating-elements .floating-card.card-1 {
-  top: 10px;
-  left: 40%;
+  top: 40%;
+  left: 80%;
   animation-delay: 0s;
 }
 
 .hero .hero-visual .floating-elements .floating-card.card-2 {
   top: 50%;
-  right: 15px;
+  right: 0px;
   animation-delay: -1s;
 }
 
@@ -2020,6 +2031,14 @@ section,
     padding: 10px 0;
   }
 }
+
+.text-truncate-2-line {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 
 
 /*--------------------------------------------------------------
@@ -2323,6 +2342,7 @@ section,
   overflow: hidden;
   aspect-ratio: 1;
   background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+  border-radius: 15px;
 }
 
 .best-sellers .product-image img {
@@ -2430,7 +2450,6 @@ section,
   font-weight: 500;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  margin-bottom: 8px;
 }
 
 .best-sellers .product-name {

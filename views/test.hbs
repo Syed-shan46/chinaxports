@@ -1,51 +1,101 @@
-<section class="about-section mt-5">
-  <div class="container">
-    <div class="row align-items-center">
-
-      <lottie-player src="https://lottie.host/246a80f0-812d-446f-92fc-a63c26566636/MCGRBRn5bd.json"
-        background="transparent" speed="1" style="width: 100%; height: 300px;" loop autoplay>
-      </lottie-player>
-
-
-      <!-- Right side: Content -->
-      <div class="col-lg-6" data-aos="fade-left">
-        <h2 class="mb-3">About Us</h2>
-        At ChinaXports, we specialize in sourcing high-quality products directly from China and delivering them
-        to customers across the globe with a seamless door-to-door service. Our mission is to simplify international
-        trade by providing reliable, transparent, and cost-effective solutions for businesses and individuals.
-
-        With strong networks and partnerships across China, we ensure that every product is carefully sourced,
-        inspected, and shipped with the highest standards of quality control. From small packages to bulk consignments,
-        our dedicated team handles every step of the process—including product sourcing, consolidation, customs
-        clearance, and last-mile delivery—so our clients can focus on growing their business while we take care of the
-        logistics.
-
-        Whether you are a business owner looking for trusted suppliers or an individual needing direct delivery from
-        China, we provide personalized solutions tailored to your needs. With our experience, efficiency, and
-        commitment, we guarantee hassle-free global sourcing and shipping—right from China to your doorstep.
-
-        Your products. Our responsibility. Delivered worldwide.
-
-        <h4 class="mt-4">Why Choose Us?</h4>
-        <ul class="list-unstyled">
-          <li>✅ Competitive wholesale prices</li>
-          <li>✅ Worldwide shipping with fast turnaround</li>
-          <li>✅ Wide product categories & sourcing expertise</li>
-          <li>✅ Reliable, long-term business partnerships</li>
-          <li>✅ Dedicated customer support</li>
-        </ul>
-
-        <a href="https://wa.me/8615669528151" class="btn btn-dark btn-lg mt-3">Get in Touch</a>
-      </div>
+<div class="container" data-aos="fade-up" data-aos-delay="100">
+  <div class="row g-4">
+    {{#each handpickedProducts}}
+    <div class="col-6 col-xl-4">
+      <a href="/products/product-details/{{this._id}}" class="text-decoration-none text-reset">
+        <div class="product-card" data-aos="zoom-in" style="cursor: pointer;">
+          <div class="product-image">
+            <img src="{{this.imageUrl.[0]}}" class="main-image img-fluid" alt="{{this.productName}}">
+          </div>
+          <div class="product-details" style="padding: 0px;">
+            <div class="product-category">{{this.category.name}}</div>
+            <h4 class="product-title" style="margin-bottom: 0px;">{{this.productName}}</h4>
+            <div class="product-meta">
+              <div class="product-price">${{this.price}}</div>
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
+    {{/each}}
   </div>
-</section>
+</div>
 
-<!-- Call to Action -->
-{{!-- <section class="cta-section py-5 text-center text-white" style="background:#111;">
-  <div class="container" data-aos="fade-up">
-    <h2 class="mb-3">Partner With Us Today</h2>
-    <p class="lead mb-4">Grow your business with reliable sourcing and global exports at unbeatable prices.</p>
-    <a href="/contact" class="btn btn-outline-light btn-lg">Start Your Journey</a>
-  </div>
-</section> --}}
+
+<style>
+  /* Product Card */
+  .product-card {
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Product Image */
+  .product-image {
+    position: relative;
+    padding-top: 100%;
+    /* Square ratio */
+    overflow: hidden;
+    background: #f9f9f9;
+  }
+
+  .product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .product-card:hover .product-image img {
+    transform: scale(1.05);
+  }
+
+  /* Product Details */
+  .product-details {
+    padding: 12px 14px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-category {
+    font-size: 13px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .product-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* max 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 42px;
+    /* keeps height consistent */
+  }
+
+  .product-meta {
+    margin-top: auto;
+    font-size: 16px;
+    font-weight: bold;
+    color: #e63946;
+  }
+</style>

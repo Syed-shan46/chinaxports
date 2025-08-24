@@ -24,27 +24,30 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 order-1 order-lg-2  d-md-block " data-aos="fade-left" data-aos-delay="100">
+
+            <div class="col-lg-6 order-1 order-lg-2 d-md-block" data-aos="fade-left" data-aos-delay="100">
                 <div class="hero-visual">
                     <div class="hero-image-wrapper">
-                        <img src="/images/product/product-11.webp" class="img-fluid hero-image" alt="Hero Image">
+                        <lottie-player src="https://lottie.host/504a0f41-f23d-4f13-b6f2-727dec20ed2b/FndQ5SYsWT.json"
+                            background="transparent" speed="1" style="width: 100%;" loop autoplay>
+                        </lottie-player>
+                        {{!-- Floating elements can be re-enabled here if needed --}}
+
                         <div class="floating-elements">
                             <div class="floating-card card-1">
                                 <i class="bi bi-globe2"></i>
                                 <span>Global</span>
                             </div>
                             <div class="floating-card card-2">
-                                <i class="bi bi-currency-dollar"></i>
-                                <span>Affordable</span>
-                            </div>
-                            <div class="floating-card card-3">
                                 <i class="bi bi-shield-check"></i>
                                 <span>Reliable</span>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section><!-- /Hero Section -->
@@ -67,7 +70,7 @@
 
         <div class="row g-5">
             {{#each handpickedProducts}}
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-6 col-md-6">
                 <a href="/products/product-details/{{this._id}}" class="text-decoration-none text-dark">
                     <div class="product-item" data-aos="fade-up" data-aos-delay="100">
                         <div class="product-image">
@@ -83,7 +86,7 @@
                         </div>
                         <div lass="product-info">
                             <div class="product-category mt-2">{{this.category.name}}</div>
-                            <h4 class="product-name">{{this.productName}}</h4>
+                            <h4 class="product-name-handpicked">{{this.productName}}</h4>
 
                             {{!-- <div class="product-price">
                                 {{#if this.oldPrice}}
@@ -101,8 +104,10 @@
 
     </div>
 
-</section><!-- /Best Sellers Section -->
+</section><!-- /Best Deals Section -->
 
+
+<!-- View All Products Btn -->
 <div class="container d-flex justify-content-center" data-aos="fade-right" data-aos-delay="100">
     <a href="/store" class="btn btn-outline-dark px-4 py-2 rounded-3">
         <i class="bi bi-box-seam me-2"></i> View All Products
@@ -114,43 +119,7 @@
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
-            <!-- Trending Section -->
-            <div class="col-lg-4 col-md-6 mb-md-0" data-aos="fade-up" data-aos-delay="100">
-                <div class="product-category">
-                    <h3 class="category-title">
-                        <i class="bi bi-fire"></i> Trending Now
-                    </h3>
-                    <div class="product-list">
-                        {{#if trendingProducts.length}}
-                        {{#each trendingProducts}}
-                        <a href="/products/product-details/{{this._id}}" class="product-card-link">
 
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="{{this.imageUrl.[0]}}" alt="{{this.productName}}" class="img-fluid">
-                                    {{#if this.badge}}
-                                    <div class="product-badges">
-                                        <span class="badge-hot">{{this.badge}}</span>
-                                    </div>
-                                    {{/if}}
-                                </div>
-                                <div class="product-info">
-                                    <h4 class="product-name">{{this.productName}}</h4>
-                                    <div class="product-price">
-                                        {{!-- <span class="current-price">${{this.price}}</span> --}}
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        {{/each}}
-                        {{else}}
-                        <center>
-                            <p>No trending products available at the moment.</p>
-                        </center>
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
 
             <!-- Special Section -->
             <div class="col-lg-4 col-md-6 mb-md-0" data-aos="fade-up" data-aos-delay="100">
@@ -190,6 +159,44 @@
                         </center>
                         {{/if}}
 
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Section -->
+            <div class="col-lg-4 col-md-6 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+                <div class="product-category">
+                    <h3 class="category-title">
+                        <i class="bi bi-fire"></i> Trending Now
+                    </h3>
+                    <div class="product-list">
+                        {{#if trendingProducts.length}}
+                        {{#each trendingProducts}}
+                        <a href="/products/product-details/{{this._id}}" class="product-card-link">
+
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="{{this.imageUrl.[0]}}" alt="{{this.productName}}" class="img-fluid">
+                                    {{#if this.badge}}
+                                    <div class="product-badges">
+                                        <span class="badge-hot">{{this.badge}}</span>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">{{this.productName}}</h4>
+                                    <div class="product-price">
+                                        {{!-- <span class="current-price">${{this.price}}</span> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        {{/each}}
+                        {{else}}
+                        <center>
+                            <p>No trending products available at the moment.</p>
+                        </center>
+                        {{/if}}
                     </div>
                 </div>
             </div>
@@ -454,5 +461,20 @@
     .enquire-btn i {
         font-size: 1rem;
         vertical-align: middle;
+    }
+
+    .product-name-handpicked {
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* max 2 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 42px;
+        /* keeps height consistent */
     }
 </style>

@@ -1935,7 +1935,6 @@ section,
 
 .hero .hero-visual .floating-elements .floating-card {
   position: absolute;
-  background: var(--surface-color);
   width: 50px;
   /* Set the card’s width */
   height: 50px;

@@ -28,25 +28,16 @@
             <div class="col-lg-6 order-1 order-lg-2 d-md-block" data-aos="fade-left" data-aos-delay="100">
                 <div class="hero-visual">
                     <div class="hero-image-wrapper">
-                        <lottie-player src="https://lottie.host/504a0f41-f23d-4f13-b6f2-727dec20ed2b/FndQ5SYsWT.json"
-                            background="transparent" speed="1" style="width: 100%;" loop autoplay>
+                        <!-- Lottie Player -->
+                        <lottie-player id="heroLottie" background="transparent" speed="1" style="width: 100%;" loop
+                            autoplay>
                         </lottie-player>
-                        {{!-- Floating elements can be re-enabled here if needed --}}
 
-                        <div class="floating-elements">
-                            <div class="floating-card card-1">
-                                <i class="bi bi-globe2"></i>
-                                <span>Global</span>
-                            </div>
-                            <div class="floating-card card-2">
-                                <i class="bi bi-shield-check"></i>
-                                <span>Reliable</span>
-                            </div>
-
-                        </div>
+                        
                     </div>
                 </div>
             </div>
+
 
         </div>
     </div>
@@ -432,6 +423,34 @@
     </div>
 
 </section><!-- /Stats Section -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const heroLottie = document.getElementById("heroLottie");
+
+        if (!heroLottie) {
+            console.error("Lottie player element not found!");
+            return;
+        }
+
+        const lottieFiles = [
+            "/images/hero/hero-1.json",
+            "/images/hero/hero-2.json",
+            "/images/hero/hero-3.json",
+        ];
+
+        const randomFile = lottieFiles[Math.floor(Math.random() * lottieFiles.length)];
+
+        customElements.whenDefined("lottie-player").then(() => {
+            // Force Lottie Player to load the animation properly
+            heroLottie.load(randomFile);
+            console.log("Random Lottie Loaded:", randomFile);
+        });
+    });
+</script>
+
+
+
 
 <style>
     .enquire-btn {

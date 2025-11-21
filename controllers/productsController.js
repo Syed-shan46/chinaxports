@@ -172,7 +172,7 @@ export async function renderEditProduct(req, res) {
 
 export async function postEditProduct(req, res) {
     try {
-        const { productName, price } = req.body;
+        const { productName, price, minQty, description} = req.body;
         const updated = await Product.findByIdAndUpdate(
             req.params.id,
             { productName, price },

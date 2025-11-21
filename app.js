@@ -15,6 +15,7 @@ const productsRouter = require('./routes/product');
 const storeRouter = require('./routes/store');
 const adminRouter = require('./routes/admin');
 const searchRouter = require('./routes/search');
+const cartRouter = require('./routes/cart');
 const adminAuthMiddleware = require('./middlewares/adminAuth');
 const categoryMiddleware = require('./middlewares/category');
 const connectDB = require('./db');
@@ -66,6 +67,7 @@ app.use('/products', productsRouter);
 app.use('/admin', adminAuthMiddleware, adminRouter);
 app.use('/search', searchRouter);
 app.use('/store', storeRouter);
+app.use('/cart',cartRouter);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
